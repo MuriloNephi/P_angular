@@ -1,9 +1,24 @@
-<mat-card>
+@if (carregando()) {
+  <p>Carregando projetos...</p>
+}
+@if (erro()) {
+  <p>{{ erro() }}</p>
+}
+@if (!carregando() && projetos().length === 0) {
+  <p>Nenhum projeto publicado ainda.</p>
+}
+
+@for (p of projetos(); track p.id) {
+  <mat-card style="margin-bottom: 12px;">
     <mat-card-header>
-        <mat-card-title>Meus Projetos</mat-card-title>
-        <mat-card-subtitle>----></mat-card-subtitle>
+      <mat-card-title>{{ p.nome }}</mat-card-title>
+      <mat-card-subtitle>{{ p.tecnologias }} - {{ p.ano }}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
-        <p>Projetos: Desenvolvimento de aplicações web com Angular, confira meu github: https://github.com/MuriloNephi </p>
-    </mat-card-content>
-</mat-card>
+    <mat-card-content>{{ p.descricao }}</mat-card-content>
+    <mat-card-actions>
+      @if (p.link_github) {
+        <a mat-button [href]="p.link_github" target="_blank" rel="noopener">Ver no GitHub</a>
+      }
+    </mat-card-actions>
+  </mat-card>
+}
