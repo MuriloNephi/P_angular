@@ -27,3 +27,12 @@ Back-end em PHP puro com PDO, servindo os dados do Portfólio em JSON.
 - Banco: dwii_db
 - Usuário: dwii_user
 - Senha: dwii2026
+## 🎯 Autoavaliação
+Conceito pretendido: A
+
+Justificativa (cite o arquivo de cada critério):
+- Consumo da API (Projetos): projeto.service.ts (GET + map extraindo a lista) + projetos.ts (subscribe com next/error) + projetos.html (@for, @if carregando/erro/vazio)
+- Catalogo + botao GitHub: tecnologia.service.ts (GET) + catalogo.ts + catalogo.html (@for com estados) + projetos.html (mat-card-actions com [href]="p.link_github")
+- Boas praticas: a URL e o HttpClient ficam só no service (projeto.service.ts e tecnologia.service.ts); os componentes (projetos.ts, catalogo.ts) só chamam listar() e guardam o estado em signals
+- Extra (Nivel A): tratamento do estado "vazio" nas duas telas (projetos.html e catalogo.html, bloco @if (!carregando() && ...length === 0))
+- Autoavaliacao: esta secao do README
