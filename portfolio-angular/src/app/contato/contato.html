@@ -1,17 +1,51 @@
 <!-- src/app/contato/contato.html -->
 <h2>Fale comigo</h2>
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <label for="nome">Nome</label>
-  <input id="nome" type="text" formControlName="nome">
-  <label for="email">E-mail</label>
-  <input id="email" type="email" formControlName="email">
-  <label for="mensagem">Mensagem</label>
-  <textarea id="mensagem" formControlName="mensagem" rows="4"></textarea>
-  <!-- botao desabilita enquanto envia; troca o texto -->
-  <button type="submit" [disabled]="enviando">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+  <div class="campo">
+    <label for="nome">Nome</label>
+    <input id="nome" type="text" formControlName="nome"
+           [attr.aria-invalid]="form.get('nome')?.invalid && form.get('nome')?.touched">
+    @if (form.get('nome')?.invalid && form.get('nome')?.touched) {
+      <p class="campo-erro">⚠ Informe um nome (mínimo 3 letras).</p>
+    }
+  </div>
+
+  <div class="campo">
+    <label for="email">E-mail</label>
+    <input id="email" type="email" formControlName="email"
+           [attr.aria-invalid]="form.get('email')?.invalid && form.get('email')?.touched">
+    @if (form.get('email')?.invalid && form.get('email')?.touched) {
+      <p class="campo-erro">⚠ E-mail inválido.</p>
+    }
+  </div>
+
+  <div class="campo">
+    <label for="mensagem">Mensagem</label>
+    <textarea id="mensagem" formControlName="mensagem" rows="4"
+              [attr.aria-invalid]="form.get('mensagem')?.invalid && form.get('mensagem')?.touched"></textarea>
+    @if (form.get('mensagem')?.invalid && form.get('mensagem')?.touched) {
+      <p class="campo-erro">⚠ Mensagem muito curta (mínimo 10 caracteres).</p>
+    }
+  </div>
+
+  <!-- botao desabilita enquanto envia OU form invalido -->
+  <button type="submit" [disabled]="enviando || form.invalid">
     {{ enviando ? 'Enviando...' : 'Enviar' }}
   </button>
 </form>
+
 <!-- estados de retorno -->
-@if (sucesso) { <p class="ok">{{ sucesso }}</p> }
-@if (erro)     { <p class="erro">{{ erro }}</p> }
+@if (sucesso) {
+  <p class="ok">✔ {{ sucesso }}</p>
+}
+@if (erroGeral) {
+  <p class="erro">⚠ {{ erroGeral }}</p>
+}
+@if (errosBack.length > 0) {
+  <ul class="erro">
+    @for (e of errosBack; track e) {
+      <li>⚠ {{ e }}</li>
+    }
+  </ul>
+}

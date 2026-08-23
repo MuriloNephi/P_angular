@@ -36,3 +36,13 @@ Justificativa (cite o arquivo de cada critério):
 - Boas praticas: a URL e o HttpClient ficam só no service (projeto.service.ts e tecnologia.service.ts); os componentes (projetos.ts, catalogo.ts) só chamam listar() e guardam o estado em signals
 - Extra (Nivel A): tratamento do estado "vazio" nas duas telas (projetos.html e catalogo.html, bloco @if (!carregando() && ...length === 0))
 - Autoavaliacao: esta secao do README
+
+## 🎯 Autoavaliação (Aula 18 — Contato à Prova de Erros)
+Conceito pretendido: B
+
+Justificativa (cite o arquivo de cada criterio):
+- Form reativo + erro por campo: contato.html (mensagens com @if ... && touched, um bloco por campo) + contato.ts (Validators.required/minLength/email no FormBuilder)
+- POST via service + tratamento: contato.service.ts (http.post tipado) + contato.ts (subscribe com next/error, tipado com HttpErrorResponse)
+- Endpoint PHP (php://input, validacao no servidor, prepared statement, responde 201/400): api/contato.php
+- Estados de envio completos: contato.ts (enviando/sucesso/erroGeral) + contato.html (texto "Enviando...", mensagem verde de sucesso com reset(), botao desabilita por enviando || form.invalid, erro de rede reabilita o botao)
+- Autoavaliacao: esta secao do README
