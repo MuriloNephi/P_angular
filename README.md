@@ -46,3 +46,10 @@ Justificativa (cite o arquivo de cada criterio):
 - Endpoint PHP (php://input, validacao no servidor, prepared statement, responde 201/400): api/contato.php
 - Estados de envio completos: contato.ts (enviando/sucesso/erroGeral) + contato.html (texto "Enviando...", mensagem verde de sucesso com reset(), botao desabilita por enviando || form.invalid, erro de rede reabilita o botao)
 - Autoavaliacao: esta secao do README
+
+## Aula 19 — Testes CRUD (api/projetos.php)
+- POST → 201 {"id":13}
+- POST sem nome → 400
+- PUT ?id=13 → 200 (idempotente)
+- DELETE ?id=13 → 204, repetido → 404
+- DELETE sem id → 400
