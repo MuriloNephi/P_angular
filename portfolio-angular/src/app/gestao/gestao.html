@@ -1,7 +1,6 @@
 <section class="gestao">
   <h2>Área de Gestão</h2>
 
-  <!-- O MESMO formulario adiciona e edita. Quem decide e o editandoId. -->
   <form [formGroup]="form" (ngSubmit)="salvar()">
     <h3>{{ editandoId() ? 'Editar projeto' : 'Adicionar projeto' }}</h3>
 
@@ -26,6 +25,12 @@
       <p class="erro-campo">⚠ Informe o ano do projeto (ex.: 2026).</p>
     }
 
+    <label for="status">Status</label>
+    <select id="status" formControlName="status">
+      <option value="rascunho">Rascunho</option>
+      <option value="publicado">Publicado</option>
+    </select>
+
     <button type="submit" [disabled]="salvando()">
       {{ salvando() ? 'Salvando...' : (editandoId() ? 'Salvar alterações' : 'Adicionar projeto') }}
     </button>
@@ -42,7 +47,7 @@
 
   @for (p of projetos(); track p.id) {
     <div class="linha-projeto">
-      <span>{{ p.nome }} ({{ p.ano }})</span>
+      <span>{{ p.nome }} ({{ p.ano }}) — {{ p.status === 'publicado' ? 'Publicado' : 'Rascunho' }}</span>
       <button type="button" (click)="editar(p)">Editar</button>
       <button type="button" (click)="excluir(p)">Excluir</button>
     </div>
