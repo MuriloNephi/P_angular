@@ -58,3 +58,13 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
+
+## 🎯 Autoavaliação
+Conceito pretendido: A
+
+Justificativa (cite o arquivo de cada critério):
+- Consumo da API (Projetos): `projeto.service.ts` (GET) + `projetos/projetos.ts` (subscribe com signal)
+- Catalogo + botao GitHub: `tecnologia.service.ts` (GET) + `projetos/projetos.html` (mat-card-actions com [href])
+- Estado vazio: `projetos.html` e `catalogo.html` tratam carregando, erro e lista vazia com @if
+- Boas praticas: a URL e o HttpClient ficam no service; o componente so injeta o service e exibe os dados
+- Autoavaliacao: esta secao do README
