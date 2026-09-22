@@ -1,3 +1,4 @@
+
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -15,7 +16,7 @@ export interface Projeto {
 @Injectable({ providedIn: 'root' })
 export class ProjetoService {
   private http = inject(HttpClient);
-  private url = 'https://urban-space-train-pjv6pqjg4qrw37j55-8000.app.github.dev/api/projetos.php';
+  private url = 'https://urban-space-train-pjv6pqjg4qrw37j55-3000.app.github.dev/api/projetos';
 
   listar(todos = false): Observable<Projeto[]> {
     const url = todos ? `${this.url}?todos=1` : this.url;

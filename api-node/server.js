@@ -1,9 +1,10 @@
 // api-node/server.js - a API do Portfolio em Node (Aula 21)
 const express = require('express');
-
+const cors = require('cors');
 const app = express();
 const PORTA = 3000;
-
+// Deixa outra origem (o Angular na porta 4200) chamar esta API.
+app.use(cors());
 const projetos = [
     {
         id: 1,
