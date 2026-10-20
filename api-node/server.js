@@ -80,6 +80,19 @@ app.put('/api/projetos/:id', async (req, res) => {
     }
 });
 
+// DELETE apaga: so precisa do id. Nao ha corpo no pedido, e a resposta tambem nao tem corpo.
+app.delete('/api/projetos/:id', async (req, res) => {
+    try {
+        const [resultado] = await pool.execute('DELETE FROM projetos WHERE id = ?', [req.params.id]);
+        if (resultado.affectedRows === 0) {
+            return res.status(404).json({ erro: 'Projeto nao encontrado' });
+        }
+        res.status(204).end();
+    } catch (erro) {
+        res.status(500).json({ erro: 'Falha no servidor: ' + erro.message });
+    }
+});
+
 // O catalogo.
 app.get('/api/tecnologias', async (req, res) => {
     try {
