@@ -18,7 +18,7 @@ interface TecnologiasResponse {
 @Injectable({ providedIn: 'root' })
 export class TecnologiaService {
   private http = inject(HttpClient);
-  private url = 'https://urban-space-train-pjv6pqjg4qrw37j55-8000.app.github.dev/api/tecnologias.php';
+  private url = 'https://urban-space-train-pjv6pqjg4qrw37j55-3000.app.github.dev/api/tecnologias';
 
   listar(): Observable<Tecnologia[]> {
     return this.http.get<TecnologiasResponse>(this.url).pipe(

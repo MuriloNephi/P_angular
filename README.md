@@ -101,3 +101,19 @@ node server.js
 
 A API sobe em http://localhost:3000. Teste com:
    curl -i http://localhost:3000/api/projetos
+
+// O mesmo SELECT do api/projetos.php: so os publicados.
+### Aula 22: a API lê do banco
+
+Antes de subir a API, o MariaDB precisa estar de pé:
+
+    sudo service mariadb start
+    cd api-node
+    node server.js
+
+Rotas que leem do `dwii_db`:
+
+    curl -i http://localhost:3000/api/projetos
+    curl -i http://localhost:3000/api/projetos/23
+    curl -i http://localhost:3000/api/tecnologias
+    
