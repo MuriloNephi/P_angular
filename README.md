@@ -357,3 +357,52 @@ Os projetos saem de `src/projetos.js` e o `App.jsx` desenha um `CardProjeto` por
 ### Aula 27: os dados vêm da API
 
 O front busca projetos (`/api/projetos`) e catálogo de tecnologias (`/api/tecnologias`) na API em Node com `fetch` dentro de `useEffect`. A tela trata três momentos: "Carregando projetos...", erro em vermelho (rede ou `resposta.ok` falso) e lista vazia ("não há nenhum projeto cadastrado"). O arquivo `src/projetos.js` saiu: os dados não moram mais no front. O endereço da API fica em `src/api.js`.
+
+### Aula 28: rotas e área de gestão
+
+O Portfólio tem dois endereços com React Router: `/` (público: projetos, catálogo e contato) e `/gestao` (login, cadastro, edição e exclusão de projetos). Qualquer outro endereço mostra a página "não encontrada". O menu usa `Link`, então trocar de tela não recarrega a página. O token do login fica no `localStorage`, é lido ao abrir a página e some no botão Sair. Quando a API responde 401 num pedido de escrita, o front apaga o token e devolve a pessoa ao login com um aviso.
+
+#### Como rodar do zero
+
+1. Clone: `git clone https://github.com/MuriloNephi/P_angular.git` e `cd P_angular`.
+2. Banco: `sudo service mariadb start` (com o banco `dwii_db` criado como na Entrega A).
+3. API: `cd api-node`, `npm install`, `node server.js` (porta 3000; mostra "API no ar").
+4. Na aba PORTS do Codespace, ponha a porta 3000 em **Public** e copie o endereço dela.
+5. Cole esse endereço, sem barra no fim, em `portfolio-react/src/api.js` (constante `API`, linha 1).
+6. Front: `cd portfolio-react`, `npm install`, `npm run dev`. Abra a porta 5173 (`http://localhost:5173`); a API responde em `http://localhost:3000`.
+7. Usuário do login: com o banco ligado, crie o dono com `cd api-node && node criar-usuario.js SEU_EMAIL SUA_SENHA` (troque pelos seus dados). Depois entre em `/gestao` com esse e-mail e essa senha. A senha não está em nenhum arquivo do repositório.
+
+#### Tela × pedido à API × token
+
+| Tela | Pedido à API | Precisa de token? |
+|---|---|---|
+| `/` projetos | `GET /api/projetos` | Não |
+| `/` catálogo | `GET /api/tecnologias` | Não |
+| `/gestao` login | `POST /api/login` | Não |
+| `/gestao` lista | `GET /api/projetos` | Não |
+| `/gestao` cadastrar | `POST /api/projetos` | Sim |
+| `/gestao` editar | `PUT /api/projetos/:id` | Sim |
+| `/gestao` excluir | `DELETE /api/projetos/:id` | Sim |
+
+#### O que este front ainda não faz
+
+- O token fica no `localStorage`, que qualquer script da própria página consegue ler. Um front de produção usaria cookie `HttpOnly`.
+- O front não sabe se o token venceu (a API dá 30 minutos) até ela responder 401: ele só checa se existe algum texto guardado, e quem valida de verdade é a API.
+- O site ainda não está publicado: roda só no Codespace (a publicação é da Aula 29).
+
+#### Por que esconder a tela de gestão não protege os dados
+
+Esconder `/gestao` só muda a aparência: o código do front é público e qualquer pessoa pode chamar a API direto, sem tela nenhuma (por exemplo com `curl`).
+Quem protege os dados é a API, que confere o token em `POST`, `PUT` e `DELETE` e responde 401 sem ele.
+Por isso o token que o front manda em `Authorization: Bearer` é o que vale, não o fato de a tela estar escondida.
+
+#### Commits
+
+Aula 25: Portfolio em React com Vite, componentes Cabecalho, CardProjeto e Rodape.
+Aula 26: Lista de projetos com map e formulario de contato com useState.
+Aula 27: projetos e catalogo vindos da API com useEffect e fetch, carregando, erro e lista vazia.
+Aula 28: rotas com React Router, login com token, cadastro, edicao e exclusao de projetos na gestao.
+
+#### Uso de IA
+
+Usei o Claude para me ajudar a resolver problemas que não sabia como e otimizar escrita.
