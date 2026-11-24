@@ -353,3 +353,7 @@ Para rodar: `cd portfolio-react`, `npm install`, `npm run dev` (porta 5173). Os 
 ### Aula 26: lista com map e formulário de contato
 
 Os projetos saem de `src/projetos.js` e o `App.jsx` desenha um `CardProjeto` por item com `map` e `key={p.id}`. O formulário de contato (`Contato.jsx`) usa `useState` em nome, e-mail, mensagem e aviso; ao enviar, avisa e limpa as caixas. Ainda não envia nada para a API.
+
+### Aula 27: os dados vêm da API
+
+O front busca projetos (`/api/projetos`) e catálogo de tecnologias (`/api/tecnologias`) na API em Node com `fetch` dentro de `useEffect`. A tela trata três momentos: "Carregando projetos...", erro em vermelho (rede ou `resposta.ok` falso) e lista vazia ("não há nenhum projeto cadastrado"). O arquivo `src/projetos.js` saiu: os dados não moram mais no front. O endereço da API fica em `src/api.js`.
