@@ -405,7 +405,7 @@ Aula 28: rotas com React Router, login com token, cadastro, edicao e exclusao de
 
 #### Uso de IA
 
-Usei o Claude para me ajudar a resolver problemas que não sabia como e otimizar escrita.
+Usei o Claude para gerar o código dos componentes React (incluindo a área de gestão) e os textos do README; li, rodei e testei tudo no meu Codespace.
 
 #### Entrega A: respostas do curl (GET por id e PUT com token)
 
