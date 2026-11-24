@@ -1,0 +1,24 @@
+body { margin: 0; font-family: system-ui, sans-serif; background: #f4f6fe; color: #222; }
+header { background: #1f3a93; color: #fff; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
+header h1 { margin: 0; font-size: 1.4rem; }
+nav a { color: #fff; margin-left: 16px; text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+main { max-width: 960px; margin: 24px auto; padding: 0 16px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.card { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 1px 4px rgba(0,0,0,.15); }
+.card h3 { margin: 0 0 4px; }
+.meta { color: #555; font-size: .9rem; }
+.card a { color: #1f3a93; }
+footer { background: #e3e6ee; text-align: center; padding: 16px; color: #555; margin-top: 32px; }
+form { background: #fff; border-radius: 8px; padding: 16px; display: grid; gap: 10px; max-width: 520px; }
+label { display: grid; gap: 4px; font-size: .9rem; }
+input, textarea { padding: 8px; border: 1px solid #bbb; border-radius: 6px; font: inherit; }
+button { padding: 8px 14px; border: 0; border-radius: 6px; background: #1f3a93; color: #fff; cursor: pointer; }
+button.perigo { background: #b00020; }
+button.neutro { background: #6b7280; }
+.erro { color: #b00020; }
+.ok { color: #1b7f3b; }
+.catalogo ul { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; list-style: none; }
+.catalogo li { background: #fff; border-radius: 16px; padding: 6px 12px; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+.gestao ul { list-style: none; padding: 0; }
+.gestao li { background: #fff; border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }

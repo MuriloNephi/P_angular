@@ -345,3 +345,7 @@ Keep-Alive: timeout=5
 
 
 ```
+### Aula 25: o Portfólio em React
+
+O front novo mora em `portfolio-react/` (Vite + React), ao lado do Angular. Componentes: `Cabecalho`, `CardProjeto` (recebe nome, descricao, tecnologias, link_github e ano por props) e `Rodape`.
+Para rodar: `cd portfolio-react`, `npm install`, `npm run dev` (porta 5173). Os dados ainda são fixos no `App.jsx`.
