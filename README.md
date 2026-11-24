@@ -349,3 +349,7 @@ Keep-Alive: timeout=5
 
 O front novo mora em `portfolio-react/` (Vite + React), ao lado do Angular. Componentes: `Cabecalho`, `CardProjeto` (recebe nome, descricao, tecnologias, link_github e ano por props) e `Rodape`.
 Para rodar: `cd portfolio-react`, `npm install`, `npm run dev` (porta 5173). Os dados ainda são fixos no `App.jsx`.
+
+### Aula 26: lista com map e formulário de contato
+
+Os projetos saem de `src/projetos.js` e o `App.jsx` desenha um `CardProjeto` por item com `map` e `key={p.id}`. O formulário de contato (`Contato.jsx`) usa `useState` em nome, e-mail, mensagem e aviso; ao enviar, avisa e limpa as caixas. Ainda não envia nada para a API.
