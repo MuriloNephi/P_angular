@@ -406,3 +406,14 @@ Aula 28: rotas com React Router, login com token, cadastro, edicao e exclusao de
 #### Uso de IA
 
 Usei o Claude para me ajudar a resolver problemas que não sabia como e otimizar escrita.
+
+#### Entrega A: respostas do curl (GET por id e PUT com token)
+
+```
+$ curl -i http://localhost:3000/api/projetos/1
+HTTP/1.1 200 OK
+{"id":1,"nome":"Portfolio Pessoal","descricao":"Site de portfolio responsivo com PHP, PDO e MariaDB, painel admin e login.","tecnologias":"PHP, MariaDB, CSS, Git","link_github":"https://github.com/usuario/portfolio","status":"publicado"}
+$ curl -i -X PUT http://localhost:3000/api/projetos/30 -H "Content-Type: application/json" -H "Authorization: Bearer <TOKEN>" -d '{"nome":"Projeto de teste editado","descricao":"teste do PUT","tecnologias":"Node","ano":2026}'
+HTTP/1.1 200 OK
+{"mensagem":"Projeto atualizado"}
+```
